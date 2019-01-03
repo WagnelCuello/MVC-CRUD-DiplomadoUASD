@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC-CRUD-DiplomadoUASD.Web"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC-CRUD-DiplomadoUASD.Models", "MVC-CRUD-DiplomadoUASD.Models\MVC-CRUD-DiplomadoUASD.Models.csproj", "{7BD9E080-B29A-4307-B5D2-3F43AFF2D39D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC-CRUD-DiplomadoUASD-Empleados", "MVC-CRUD-DiplomadoUASD-Empleados\MVC-CRUD-DiplomadoUASD-Empleados.csproj", "{B6E32DD9-B3C9-46D5-B14F-C088B966F3D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC-CRUD-DiplomadoUASD-Empleados-Models", "MVC-CRUD-DiplomadoUASD-Empleados-Models\MVC-CRUD-DiplomadoUASD-Empleados-Models.csproj", "{3240AB90-76BC-490D-B270-018BC7D18A4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{7BD9E080-B29A-4307-B5D2-3F43AFF2D39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BD9E080-B29A-4307-B5D2-3F43AFF2D39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BD9E080-B29A-4307-B5D2-3F43AFF2D39D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6E32DD9-B3C9-46D5-B14F-C088B966F3D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E32DD9-B3C9-46D5-B14F-C088B966F3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E32DD9-B3C9-46D5-B14F-C088B966F3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E32DD9-B3C9-46D5-B14F-C088B966F3D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3240AB90-76BC-490D-B270-018BC7D18A4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3240AB90-76BC-490D-B270-018BC7D18A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3240AB90-76BC-490D-B270-018BC7D18A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3240AB90-76BC-490D-B270-018BC7D18A4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

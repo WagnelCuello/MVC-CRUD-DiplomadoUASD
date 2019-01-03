@@ -1,0 +1,58 @@
+﻿@model MVC_CRUD_DiplomadoUASD_Empleados_Models.Models.TBL_EMPLEADO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_EMPLEADO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_DEPARTAMENTO.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_DEPARTAMENTO.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_PUESTO.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_PUESTO.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Empleado }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

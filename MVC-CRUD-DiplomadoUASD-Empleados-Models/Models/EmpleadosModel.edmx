@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmpleadoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="Id_Departamento" />
+          </Key>
+          <Property Name="Id_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_EMPLEADO">
+          <Key>
+            <PropertyRef Name="Id_Empleado" />
+          </Key>
+          <Property Name="Id_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Id_Puesto" Type="int" Nullable="false" />
+          <Property Name="Id_Departamento" Type="int" Nullable="false" />
+          <Property Name="Salario" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PUESTO">
+          <Key>
+            <PropertyRef Name="Id_Puesto" />
+          </Key>
+          <Property Name="Id_Puesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TBL_EMPLEADO_TBL_DEPARTAMENTO">
+          <End Role="TBL_DEPARTAMENTO" Type="Self.TBL_DEPARTAMENTO" Multiplicity="1" />
+          <End Role="TBL_EMPLEADO" Type="Self.TBL_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_DEPARTAMENTO">
+              <PropertyRef Name="Id_Departamento" />
+            </Principal>
+            <Dependent Role="TBL_EMPLEADO">
+              <PropertyRef Name="Id_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_EMPLEADO_TBL_PUESTO">
+          <End Role="TBL_PUESTO" Type="Self.TBL_PUESTO" Multiplicity="1" />
+          <End Role="TBL_EMPLEADO" Type="Self.TBL_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PUESTO">
+              <PropertyRef Name="Id_Puesto" />
+            </Principal>
+            <Dependent Role="TBL_EMPLEADO">
+              <PropertyRef Name="Id_Puesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpleadoDBModelStoreContainer">
+          <EntitySet Name="TBL_DEPARTAMENTO" EntityType="Self.TBL_DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_EMPLEADO" EntityType="Self.TBL_EMPLEADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PUESTO" EntityType="Self.TBL_PUESTO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBL_EMPLEADO_TBL_DEPARTAMENTO" Association="Self.FK_TBL_EMPLEADO_TBL_DEPARTAMENTO">
+            <End Role="TBL_DEPARTAMENTO" EntitySet="TBL_DEPARTAMENTO" />
+            <End Role="TBL_EMPLEADO" EntitySet="TBL_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_EMPLEADO_TBL_PUESTO" Association="Self.FK_TBL_EMPLEADO_TBL_PUESTO">
+            <End Role="TBL_PUESTO" EntitySet="TBL_PUESTO" />
+            <End Role="TBL_EMPLEADO" EntitySet="TBL_EMPLEADO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmpleadoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_DEPARTAMENTO">
+          <Key>
+            <PropertyRef Name="Id_Departamento" />
+          </Key>
+          <Property Name="Id_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TBL_EMPLEADO" Relationship="Self.FK_TBL_EMPLEADO_TBL_DEPARTAMENTO" FromRole="TBL_DEPARTAMENTO" ToRole="TBL_EMPLEADO" />
+        </EntityType>
+        <EntityType Name="TBL_EMPLEADO">
+          <Key>
+            <PropertyRef Name="Id_Empleado" />
+          </Key>
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Puesto" Type="Int32" Nullable="false" />
+          <Property Name="Id_Departamento" Type="Int32" Nullable="false" />
+          <Property Name="Salario" Type="Double" Nullable="false" />
+          <NavigationProperty Name="TBL_DEPARTAMENTO" Relationship="Self.FK_TBL_EMPLEADO_TBL_DEPARTAMENTO" FromRole="TBL_EMPLEADO" ToRole="TBL_DEPARTAMENTO" />
+          <NavigationProperty Name="TBL_PUESTO" Relationship="Self.FK_TBL_EMPLEADO_TBL_PUESTO" FromRole="TBL_EMPLEADO" ToRole="TBL_PUESTO" />
+        </EntityType>
+        <EntityType Name="TBL_PUESTO">
+          <Key>
+            <PropertyRef Name="Id_Puesto" />
+          </Key>
+          <Property Name="Id_Puesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TBL_EMPLEADO" Relationship="Self.FK_TBL_EMPLEADO_TBL_PUESTO" FromRole="TBL_PUESTO" ToRole="TBL_EMPLEADO" />
+        </EntityType>
+        <Association Name="FK_TBL_EMPLEADO_TBL_DEPARTAMENTO">
+          <End Role="TBL_DEPARTAMENTO" Type="Self.TBL_DEPARTAMENTO" Multiplicity="1" />
+          <End Role="TBL_EMPLEADO" Type="Self.TBL_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_DEPARTAMENTO">
+              <PropertyRef Name="Id_Departamento" />
+            </Principal>
+            <Dependent Role="TBL_EMPLEADO">
+              <PropertyRef Name="Id_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_EMPLEADO_TBL_PUESTO">
+          <End Role="TBL_PUESTO" Type="Self.TBL_PUESTO" Multiplicity="1" />
+          <End Role="TBL_EMPLEADO" Type="Self.TBL_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PUESTO">
+              <PropertyRef Name="Id_Puesto" />
+            </Principal>
+            <Dependent Role="TBL_EMPLEADO">
+              <PropertyRef Name="Id_Puesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpleadoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_DEPARTAMENTO" EntityType="Self.TBL_DEPARTAMENTO" />
+          <EntitySet Name="TBL_EMPLEADO" EntityType="Self.TBL_EMPLEADO" />
+          <EntitySet Name="TBL_PUESTO" EntityType="Self.TBL_PUESTO" />
+          <AssociationSet Name="FK_TBL_EMPLEADO_TBL_DEPARTAMENTO" Association="Self.FK_TBL_EMPLEADO_TBL_DEPARTAMENTO">
+            <End Role="TBL_DEPARTAMENTO" EntitySet="TBL_DEPARTAMENTO" />
+            <End Role="TBL_EMPLEADO" EntitySet="TBL_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_EMPLEADO_TBL_PUESTO" Association="Self.FK_TBL_EMPLEADO_TBL_PUESTO">
+            <End Role="TBL_PUESTO" EntitySet="TBL_PUESTO" />
+            <End Role="TBL_EMPLEADO" EntitySet="TBL_EMPLEADO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmpleadoDBModelStoreContainer" CdmEntityContainer="EmpleadoDBEntities">
+          <EntitySetMapping Name="TBL_DEPARTAMENTO">
+            <EntityTypeMapping TypeName="EmpleadoDBModel.TBL_DEPARTAMENTO">
+              <MappingFragment StoreEntitySet="TBL_DEPARTAMENTO">
+                <ScalarProperty Name="Id_Departamento" ColumnName="Id_Departamento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_EMPLEADO">
+            <EntityTypeMapping TypeName="EmpleadoDBModel.TBL_EMPLEADO">
+              <MappingFragment StoreEntitySet="TBL_EMPLEADO">
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Id_Puesto" ColumnName="Id_Puesto" />
+                <ScalarProperty Name="Id_Departamento" ColumnName="Id_Departamento" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PUESTO">
+            <EntityTypeMapping TypeName="EmpleadoDBModel.TBL_PUESTO">
+              <MappingFragment StoreEntitySet="TBL_PUESTO">
+                <ScalarProperty Name="Id_Puesto" ColumnName="Id_Puesto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
